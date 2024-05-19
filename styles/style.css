@@ -1,0 +1,19 @@
+* {
+	margin: 0;
+	padding: 0;
+	color: #1b1c21;
+}
+html,
+body {
+	font-family: 'TT Lakes', 'Times New Roman', sans-serif;
+	box-sizing: border-box;
+	height: 100%;
+	max-width: 320px;
+}
+
+input,
+button,
+textarea,
+select {
+	font: inherit;
+}
