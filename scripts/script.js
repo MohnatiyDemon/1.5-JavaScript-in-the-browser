@@ -1,5 +1,7 @@
-'use strict'
+import Swiper from 'swiper'
+import 'swiper/css'
 
+console.log('is ok')
 const swiper = new Swiper('.swiper', {
 	//! Основные настройки
 	direction: 'horizontal', // 'vertical', 'horizontal'
