@@ -1,42 +1,69 @@
-import Swiper from 'swiper'
-import 'swiper/css'
+const widthMediaQuery = window.matchMedia(
+	'(width >= 768px) and (width < 1120px)'
+)
+const widthMediaQueryDesktop = window.matchMedia('(min-width: 1120px)')
+const swiper = document.querySelector('.swiper')
+const readMore = document.querySelector('.read-more')
+const readMoreButton = readMore.querySelector('.read-more__button')
+const readMoreText = readMore.querySelector('.read-more__text')
+const swiperSlide = document.querySelectorAll('.swiper-slide')
+const hiddenClass = document.querySelector('.hidden')
 
-console.log('is ok')
-const swiper = new Swiper('.swiper', {
-	//! Основные настройки
-	direction: 'horizontal', // 'vertical', 'horizontal'
-	loop: true, // true - круговой слайдер, false - слайдер с конечными положениями
-	speed: 500, // скорость переключения слайдов
-	effect: 'slider', // cards, coverflow, flip, fade, cube
-	// initialSlide: 2, // Начинаем со 2 слайдера
-	// freeMode: true, // можно перетаскивать как ленту
-	slidesPerView: 1, // кол-во активных слайдов
-	centeredSlides: true, // центрирование слайдов
+function swiperInit() {
+	const swiper = new Swiper('.swiper', {
+		breakpoints: {
+			0: {
+				enabled: true,
+				freeMode: true,
+				slidesPerView: 'auto',
+				breakpointsBase: 'container',
+				spaceBetween: 0,
+				pagination: {
+					el: '.swiper-pagination',
+					clickable: true,
+				},
+			},
+			768: {
+				enabled: false,
+			},
+		},
+	})
+}
 
-	//! Пагинация (точки)
-	pagination: {
-		el: '.swiper-pagination',
-		clickable: true, // true - Пагинация становится кликабельной
-	},
-	//! Автоматическое перелистывание
-	// autoplay: {
-	//     delay: 1000, //Задержка перед перелистыванием 1с = 1000мл/с
-	// },
+swiperInit()
 
-	// 	breakpoints: {
-	// 		1251: {
-	// 				spaceBetween: 20,
-	// 				slidesPerView: 3,
-	// 		},
+widthMediaQuery.addEventListener('change', () => {
+	if (!widthMediaQuery.matches) {
+		swiperInit()
+	}
+})
 
-	// 		951: {
-	// 				spaceBetween: 20,
-	// 				slidesPerView: 2,
-	// 		},
+widthMediaQueryDesktop.addEventListener(
+	'change',
+	(checkMedia = () => {
+		if (widthMediaQuery.matches) {
+			for (let i = 6; i < swiperSlide.length; i++) {
+				swiperSlide[i].classList.add('hidden')
+			}
+		}
+		if (widthMediaQueryDesktop.matches) {
+			for (let i = 6; i < 8; i++) {
+				swiperSlide[i].classList.remove('hidden')
+			}
+			for (let i = 8; i < swiperSlide.length; i++) {
+				swiperSlide[i].classList.add('hidden')
+			}
+		}
+	})
+)
 
-	// 		0: {
-	// 				spaceBetween: 0,
-	// 				slidesPerView: 1,
-	// 		},
-	// },
+checkMedia()
+
+readMore.addEventListener('click', () => {
+	readMoreButton.classList.toggle('read-more__button--active')
+	readMoreText.classList.toggle('read-more__text--active')
+	let countIteration = widthMediaQueryDesktop.matches ? 8 : 6
+	for (let i = countIteration; i < swiperSlide.length; i++) {
+		swiperSlide[i].classList.toggle('hidden')
+	}
 })
