@@ -85,6 +85,7 @@ body {
 	background: #f8f8f8 url('../images/icons/expand.svg') no-repeat;
 	border: none;
 	transition: transform 200ms ease-in;
+	cursor: pointer;
 }
 .read-more__button--active {
 	transform: rotate(180deg);
@@ -108,9 +109,6 @@ body {
 	.swiper-wrapper {
 		flex-wrap: wrap;
 	}
-	/* .swiper-slide:nth-child(n + 7) {
-		display: none;
-	} */
 }
 
 @media screen and (min-width: 1120px) {
@@ -121,9 +119,6 @@ body {
 		max-width: 1120px;
 		margin: 0 auto;
 	}
-	/* .swiper-slide:nth-child(n + 9) {
-		display: none;
-	} */
 
 	.read-more {
 		display: flex;
