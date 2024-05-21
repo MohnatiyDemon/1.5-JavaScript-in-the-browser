@@ -93,20 +93,14 @@ body {
 	font-size: 16px;
 	font-weight: 500;
 }
-.read-more__text--active {
-	font-size: 0;
-}
-
-.read-more__text--active::before {
-	content: 'Скрыть';
-	font-size: 16px;
-}
-
 .hidden {
 	display: none;
 }
 
 @media screen and (width >= 768px) and (width < 1120px) {
+	.title {
+		background-color: #f8f8f8;
+	}
 	.read-more {
 		display: flex;
 	}
@@ -120,6 +114,9 @@ body {
 }
 
 @media screen and (min-width: 1120px) {
+	.title {
+		background-color: #f8f8f8;
+	}
 	.main {
 		max-width: 1120px;
 		margin: 0 auto;
