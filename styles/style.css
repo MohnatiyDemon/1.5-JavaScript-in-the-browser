@@ -70,30 +70,33 @@ body {
 	background-color: #b5b6bc;
 }
 .read-more {
-	padding: 24px;
 	display: none;
-	flex-direction: row;
+	padding: 24px;
 	align-items: center;
-	gap: 9px;
 	cursor: pointer;
-	max-width: max-content;
 }
 
 .read-more__button {
-	height: 24px;
-	width: 24px;
-	background: #f8f8f8 url('../images/icons/expand.svg') no-repeat;
+	position: relative;
+	background-color: inherit;
 	border: none;
-	transition: transform 200ms ease-in;
 	cursor: pointer;
-}
-.read-more__button--active {
-	transform: rotate(180deg);
-}
-.read-more__text {
 	font-size: 16px;
 	font-weight: 500;
+	margin-left: 24px;
 }
+
+.read-more__button::before {
+	content: url('../images/icons/expand.svg');
+	position: absolute;
+	left: -30px;
+	top: -3.5px;
+	transition: transform 200ms linear;
+}
+.read-more__button--active::before {
+	transform: rotate(180deg) translate(0, 3.5px);
+}
+
 .hidden {
 	display: none;
 }

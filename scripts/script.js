@@ -7,7 +7,6 @@ const widthMediaQueryDesktop = window.matchMedia('(min-width: 1102px)')
 const swiper = document.querySelector('.swiper')
 const readMore = document.querySelector('.read-more')
 const readMoreButton = readMore.querySelector('.read-more__button')
-const readMoreText = readMore.querySelector('.read-more__text')
 const swiperSlide = document.querySelectorAll('.swiper-slide')
 const hiddenClass = document.querySelector('.hidden')
 
@@ -61,9 +60,10 @@ checkMedia()
 
 readMoreButton.addEventListener('click', () => {
 	readMoreButton.classList.toggle('read-more__button--active')
-	readMoreText.textContent === 'Показать все'
-		? (readMoreText.textContent = 'Скрыть')
-		: (readMoreText.textContent = 'Показать все')
+	const haveActiveClass = document.querySelector('.read-more__button--active')
+	readMore.contains(haveActiveClass)
+		? (readMoreButton.textContent = 'Скрыть')
+		: (readMoreButton.textContent = 'Показать все')
 	let countIteration = widthMediaQueryDesktop.matches ? 8 : 6
 	for (let i = countIteration; i < swiperSlide.length; i++) {
 		swiperSlide[i].classList.toggle('hidden')
