@@ -60,12 +60,16 @@ checkMedia()
 
 readMoreButton.addEventListener('click', () => {
 	readMoreButton.classList.toggle('read-more__button--active')
-	const haveActiveClass = document.querySelector('.read-more__button--active')
-	readMore.contains(haveActiveClass)
-		? (readMoreButton.textContent = 'Скрыть')
-		: (readMoreButton.textContent = 'Показать все')
+	checkContains()
+
 	let countIteration = widthMediaQueryDesktop.matches ? 8 : 6
 	for (let i = countIteration; i < swiperSlide.length; i++) {
 		swiperSlide[i].classList.toggle('hidden')
 	}
 })
+function checkContains() {
+	const haveActiveClass = document.querySelector('.read-more__button--active')
+	readMore.contains(haveActiveClass)
+		? (readMoreButton.textContent = 'Скрыть')
+		: (readMoreButton.textContent = 'Показать все')
+}
