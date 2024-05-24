@@ -14,7 +14,7 @@ body {
 }
 .title {
 	padding: 16px;
-	background-color: #ffffff;
+	background: linear-gradient(90deg, #f8f8f8, #ffffff);
 }
 .title__h1 {
 	color: #7e7e82;
@@ -102,9 +102,6 @@ body {
 }
 
 @media screen and (width >= 768px) and (width < 1120px) {
-	.title {
-		background-color: #f8f8f8;
-	}
 	.read-more {
 		display: flex;
 	}
@@ -115,9 +112,6 @@ body {
 }
 
 @media screen and (min-width: 1120px) {
-	.title {
-		background-color: #f8f8f8;
-	}
 	.main {
 		max-width: 1120px;
 		margin: 0 auto;
